@@ -1,0 +1,26 @@
+{
+  "name": "webpack-test-repositiry",
+  "version": "1.0.0",
+  "description": "testtesttest",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doctorsylar/webpack-test-repositiry.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doctorsylar/webpack-test-repositiry/issues"
+  },
+  "homepage": "https://github.com/doctorsylar/webpack-test-repositiry#readme",
+  "devDependencies": {
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
