@@ -28,6 +28,10 @@
           >{{ passwordAdvice }}</label>
         </label>
       </div>
+        <button type="submit"
+                class="btn btn-primary"
+                v-bind:disabled="!dataValid"
+        >Submit</button>
     </form>
   </div>
 </template>
@@ -96,7 +100,18 @@ export default {
       else {
         return 'wrong-advice';
       }
-    }
+    },
+      dataValid () {
+        if (this.usernameAdviceClass === 'okay'
+            && this.passwordAdviceClass === 'okay') {
+            return true;
+        }
+        else {
+            return false;
+        }
+      }
+
+
   }
 }
 </script>
@@ -110,6 +125,9 @@ export default {
   }
   .okay {
     color: darkgreen;
+  }
+  .btn:disabled {
+      cursor: no-drop;
   }
 
 </style>
