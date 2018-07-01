@@ -1,10 +1,34 @@
 <template>
   <div id="app">
-    <label>
-      Input:
-      <input v-model="text">
-    </label>
-    <p> Reverse: {{ reversed }}</p>
+    <h2>Registration:</h2>
+    <form action="/server_page" target="_self" method="post">
+      <div class="form-group">
+        <label>
+          Username:
+          <input class="form-control"
+            type="text"
+                 v-model="username"
+                 placeholder="Username..."
+          >
+          <label class="advice"
+            v-bind:class="usernameAdviceClass"
+          >{{ usernameAdvice }}</label>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          Password:
+          <input class="form-control"
+                 type="password"
+                 v-model="password"
+                 placeholder="Password..."
+          >
+          <label class="advice"
+                 v-bind:class="passwordAdviceClass"
+          >{{ passwordAdvice }}</label>
+        </label>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -13,7 +37,9 @@ export default {
   name: 'app',
   data () {
     return {
-      text: ''
+      text: '',
+      username: '',
+      password: ''
     }
   },
   computed: {
@@ -24,11 +50,66 @@ export default {
       else {
         return '';
       }
+    },
+    usernameAdvice () {
+      let name = this.username;
+      if (name.length < 6) {
+        return 'Имя персонажа должно быть больше 6 символов'
+      }
+      else if (name.length > 12) {
+        return 'Имя персонажа не может превышать 12 символов'
+      }
+      else if (name.split('').indexOf(' ') !== -1) {
+        return 'Имя персонажа не должно содержать пробелов'
+      }
+      else {
+        return 'It is okay';
+      }
+    },
+    usernameAdviceClass () {
+      if (this.usernameAdvice === 'It is okay') {
+        return 'okay';
+      }
+      else {
+        return 'wrong-advice';
+      }
+    },
+    passwordAdvice () {
+      let password = this.password;
+      if (password.length < 6) {
+        return 'Ваш пароль должен быть больше 6 символов'
+      }
+      else if (password.length > 12) {
+        return 'Ваш пароль не может превышать 12 символов'
+      }
+      else if (password.split('').indexOf(' ') !== -1) {
+        return 'Ваш пароль не должен содержать пробелов'
+      }
+      else {
+        return 'It is okay';
+      }
+    },
+    passwordAdviceClass () {
+      if (this.passwordAdvice === 'It is okay') {
+        return 'okay';
+      }
+      else {
+        return 'wrong-advice';
+      }
     }
   }
 }
 </script>
 
 <style>
+  .advice {
+    font-size: 12px;
+  }
+  .wrong-advice {
+    color: darkred;
+  }
+  .okay {
+    color: darkgreen;
+  }
 
 </style>
