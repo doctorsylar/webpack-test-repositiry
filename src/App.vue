@@ -6,7 +6,8 @@
         <label>
           Username:
           <input class="form-control"
-            type="text"
+                 v-bind:class="(usernameAdviceClass !== 'okay') ? 'wrong-input' : null"
+                 type="text"
                  v-model="username"
                  placeholder="Username..."
           >
@@ -19,6 +20,7 @@
         <label>
           Password:
           <input class="form-control"
+                 v-bind:class="(passwordAdviceClass !== 'okay') ? 'wrong-input' : null"
                  type="password"
                  v-model="password"
                  placeholder="Password..."
@@ -102,13 +104,8 @@ export default {
       }
     },
       dataValid () {
-        if (this.usernameAdviceClass === 'okay'
-            && this.passwordAdviceClass === 'okay') {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (this.usernameAdviceClass === 'okay'
+            && this.passwordAdviceClass === 'okay');
       }
 
 
@@ -117,17 +114,23 @@ export default {
 </script>
 
 <style>
-  .advice {
-    font-size: 12px;
-  }
-  .wrong-advice {
-    color: darkred;
-  }
-  .okay {
-    color: darkgreen;
-  }
-  .btn:disabled {
-      cursor: no-drop;
-  }
+    * {
+        box-shadow: none !important;
+    }
+    .advice {
+      font-size: 12px;
+    }
+    .form-group .form-control[class~=wrong-input] {
+        border-color: darkred;
+    }
+    .wrong-advice {
+      color: darkred;
+    }
+    .okay {
+      color: darkgreen;
+    }
+    .btn:disabled {
+        cursor: no-drop;
+    }
 
 </style>
