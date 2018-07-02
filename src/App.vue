@@ -113,10 +113,7 @@ export default {
 }
 </script>
 
-<style>
-    * {
-        box-shadow: none !important;
-    }
+<style scoped>
     .advice {
       font-size: 12px;
     }

@@ -9,5 +9,5 @@ new Vue({
 });
 new Vue({
     el: '#second',
-    render: m => m(Test)
+    render: h => h(Test)
 });
