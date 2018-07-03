@@ -10,13 +10,39 @@
             of this rule. The only rule for this two is to be equal or lesser
             than attack level.
         </p>
+        <div>
+            <button class="btn btn-danger"
+                    v-on:click="selectClass"
+            >
+                Fire mage
+            </button>
+            <button class="btn btn-primary"
+                    v-on:click="characterClass = this.target.innerText"
+            >
+                Water mage
+            </button>
+            <button class="btn btn-success"
+                    v-on:click="characterClass = this.target.innerText"
+            >
+                Earth mage
+            </button>
+            <button class="btn btn-light"
+                    v-on:click="characterClass = this.target.innerText"
+            >
+                Wind mage
+            </button>
+        </div>
+        <div>
+            {{ characterClass }}
+        </div>
         <div class="row">
             <div class="col-sm-4 col-lg-2 ">
                 Attack:
             </div>
             <div class="col-sm-8 col-lg-2  buttons">
                 <button class="btn"
-                        v-bind:disabled="attack === 1 || attack === defence "
+                        v-bind:disabled="attack === 1 || attack === defence
+                        || attack === health || attack === speed "
                         v-on:click="attack--"
                 >-</button>
                 <label class="value">{{ attack }} </label>
@@ -102,6 +128,7 @@
         name: "Test",
         data () {
             return {
+                characterClass: '',
                 attack: 1,
                 defence: 0,
                 buff: 0,
@@ -129,6 +156,11 @@
                     }
                 }
                 return result;
+            }
+        },
+        methods : {
+            selectClass (event) {
+                this.characterClass = event;
             }
         }
     }
