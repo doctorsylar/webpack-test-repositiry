@@ -17,17 +17,17 @@
                 Fire mage
             </button>
             <button class="btn btn-primary"
-                    v-on:click="characterClass = this.target.innerText"
+                    v-on:click="selectClass"
             >
                 Water mage
             </button>
             <button class="btn btn-success"
-                    v-on:click="characterClass = this.target.innerText"
+                    v-on:click="selectClass"
             >
                 Earth mage
             </button>
             <button class="btn btn-light"
-                    v-on:click="characterClass = this.target.innerText"
+                    v-on:click="selectClass"
             >
                 Wind mage
             </button>
@@ -36,10 +36,10 @@
             {{ characterClass }}
         </div>
         <div class="row">
-            <div class="col-sm-4 col-lg-2 ">
+            <div class="col-sm-6 col-lg-2 ">
                 Attack:
             </div>
-            <div class="col-sm-8 col-lg-2  buttons">
+            <div class="col-sm-6 col-lg-2  buttons">
                 <button class="btn"
                         v-bind:disabled="attack === 1 || attack === defence
                         || attack === health || attack === speed "
@@ -53,10 +53,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-lg-2 ">
+            <div class="col-sm-6 col-lg-2 ">
                 Defence:
             </div>
-            <div class="col-sm-8 col-lg-2  buttons">
+            <div class="col-sm-6 col-lg-2  buttons">
                 <button class="btn"
                         v-bind:disabled="defence === 0 || defence === buff"
                         v-on:click="defence--"
@@ -69,10 +69,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-lg-2 ">
+            <div class="col-sm-6 col-lg-2 ">
                 Buff:
             </div>
-            <div class="col-sm-8 col-lg-2  buttons">
+            <div class="col-sm-6 col-lg-2  buttons">
                 <button class="btn"
                         v-bind:disabled="buff === 0 || (buff < defence || buff < attack)"
                         v-on:click="buff--"
@@ -86,10 +86,10 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-sm-4 col-lg-2 ">
+            <div class="col-sm-6 col-lg-2 ">
                 Health mod:
             </div>
-            <div class="col-sm-8 col-lg-2  buttons">
+            <div class="col-sm-6 col-lg-2  buttons">
                 <button class="btn"
                         v-bind:disabled="health === 0"
                         v-on:click="health--"
@@ -102,10 +102,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-lg-2 ">
+            <div class="col-sm-6 col-lg-2 ">
                 Speed mod:
             </div>
-            <div class="col-sm-8 col-lg-2  buttons">
+            <div class="col-sm-6 col-lg-2  buttons">
                 <button class="btn"
                         v-bind:disabled="speed === 0"
                         v-on:click="speed--"
@@ -119,6 +119,7 @@
         </div>
         <div>
             <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-danger" type="reset" v-on:click="reset">Reset</button>
         </div>
     </div>
 </template>
@@ -160,7 +161,15 @@
         },
         methods : {
             selectClass (event) {
-                this.characterClass = event;
+                this.characterClass = event.target.innerText;
+            },
+            reset () {
+                this.characterClass = '';
+                this.attack = 1;
+                this.defence = 0;
+                this.buff = 0;
+                this.speed = 0;
+                this.health = 0;
             }
         }
     }
