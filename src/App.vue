@@ -118,13 +118,13 @@ export default {
       font-size: 12px;
     }
     .form-group .form-control[class~=wrong-input] {
-        border-color: darkred;
+        border-color: red;
     }
     .wrong-advice {
-      color: darkred;
+      color: red;
     }
     .okay {
-      color: darkgreen;
+      color: green;
     }
     .btn:disabled {
         cursor: no-drop;

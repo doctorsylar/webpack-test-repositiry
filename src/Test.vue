@@ -33,20 +33,22 @@
             </button>
         </div>
         <div>
-            {{ characterClass }}
+            <p>
+                Your character's class is {{ characterClass }}.
+            </p>
         </div>
         <div class="row">
             <div class="col-sm-6 col-lg-2 ">
                 Attack:
             </div>
             <div class="col-sm-6 col-lg-2  buttons">
-                <button class="btn"
+                <button class="btn  btn-info"
                         v-bind:disabled="attack === 1 || attack === defence
                         || attack === health || attack === speed "
                         v-on:click="attack--"
                 >-</button>
                 <label class="value">{{ attack }} </label>
-                <button class="btn"
+                <button class="btn  btn-info"
                         v-bind:disabled="attack === 3 || attack > buff "
                         v-on:click="attack++"
                 >+</button>
@@ -57,12 +59,12 @@
                 Defence:
             </div>
             <div class="col-sm-6 col-lg-2  buttons">
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="defence === 0 || defence === buff"
                         v-on:click="defence--"
                 >-</button>
                 <label class="value">{{ defence }} </label>
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="defence === 3 || defence === attack || defence > buff "
                         v-on:click="defence++"
                 >+</button>
@@ -73,12 +75,12 @@
                 Buff:
             </div>
             <div class="col-sm-6 col-lg-2  buttons">
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="buff === 0 || (buff < defence || buff < attack)"
                         v-on:click="buff--"
                 >-</button>
                 <label class="value">{{ buff }} </label>
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="buff === 3 || buff === defence  "
                         v-on:click="buff++"
                 >+</button>
@@ -90,12 +92,12 @@
                 Health mod:
             </div>
             <div class="col-sm-6 col-lg-2  buttons">
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="health === 0"
                         v-on:click="health--"
                 >-</button>
                 <label class="value">{{ health }} </label>
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="health === 3 || health === attack  "
                         v-on:click="health++"
                 >+</button>
@@ -106,12 +108,12 @@
                 Speed mod:
             </div>
             <div class="col-sm-6 col-lg-2  buttons">
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="speed === 0"
                         v-on:click="speed--"
                 >-</button>
                 <label class="value">{{ speed }} </label>
-                <button class="btn"
+                <button class="btn btn-info"
                         v-bind:disabled="speed === 3 || speed === attack  "
                         v-on:click="speed++"
                 >+</button>
@@ -129,7 +131,7 @@
         name: "Test",
         data () {
             return {
-                characterClass: '',
+                characterClass: 'not chosen yet',
                 attack: 1,
                 defence: 0,
                 buff: 0,
@@ -164,7 +166,7 @@
                 this.characterClass = event.target.innerText;
             },
             reset () {
-                this.characterClass = '';
+                this.characterClass = 'not chosen yet';
                 this.attack = 1;
                 this.defence = 0;
                 this.buff = 0;
